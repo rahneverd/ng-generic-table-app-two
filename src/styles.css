@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.margin-right{
+  margin-right: 1rem;
+}
+.margin-left{
+  margin-left: 1rem;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

@@ -1,1 +1,23 @@
-<p>table works!</p>
+
+<table class="table" *ngIf="(cols > 1 && rows > 0)">
+  <thead>
+    <tr>
+      <th scope="col" *ngFor="let key of keyArray">{{key.name}}</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataArray | slice:1; let i = index">
+      <td *ngFor="let key of keyArray">
+        {{data[key.key]}}
+      </td>
+      <td>
+        <a class="btn btn-primary"  (click)="changeObj(i+1); changeEdit(); changeShowForm()">EDIT</a>
+      </td>
+      <td>
+        <a class="btn btn-danger" (click)="deleteObj(i)">DELETE</a>
+      </td>
+    </tr>
+  </tbody>
+  </table>

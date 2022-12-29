@@ -1,1 +1,16 @@
-<p>input-form works!</p>
+
+<div class="container-fluid mt-2 mb-2">
+  <button class="btn btn-primary mx-auto" *ngIf="!showForm" (click)="changeShowForm()">ADD DATA</button>
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()" class="form-row" *ngIf="showForm">
+    <div class="row">
+      <div class="col-md-6" *ngFor="let data of keyArray" >
+        <label class="form-label">{{data.name}}</label>
+        <input class="form-control" [type]="data.type" formControlName={{data.key}} [class.is-invalid]="dataForm.get(data.key).invalid && dataForm.get(data.key).touched">
+      </div>
+    </div>
+    <button [disabled]="!dataForm.valid" class="btn btn-primary mt-2 px-4 py-2 margin-right" type="submit">ADD</button>
+    <button class="btn btn-danger mt-2 px-4 py-2" type="button" (click)="dataForm.reset(); changeShowForm()">Cancel</button>
+  </form>
+</div>
+<hr>
+

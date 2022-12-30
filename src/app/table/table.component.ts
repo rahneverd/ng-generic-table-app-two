@@ -23,7 +23,7 @@ export class TableComponent implements OnInit {
     this.rows = this.dataArray.length + 1
     this._data.objId.subscribe(data => this.objId = data)
     this._data.showForm.subscribe(data => this.showForm = data)
-    this._data.edit.subscribe(data => this.edit)
+    this._data.edit.subscribe(data => this.edit = data)
   }
 
   deleteObj(i) {
@@ -37,8 +37,8 @@ export class TableComponent implements OnInit {
     console.log(id)
     this._data.changeObjId(id)
   }
-  changeEdit() {
-    !this.edit ? this._data.changeEdit(1) : this._data.changeEdit(0)
+  changeEdit(data) {
+    this._data.changeEdit(data)
   }
 
 }

@@ -22,7 +22,10 @@ export class InputFormComponent implements OnInit {
     this.dataArray = this._data.dataArray
     this._data.showForm.subscribe(data => this.showForm = data)
     this._data.objId.subscribe(data => this.objId = data)
-    this._data.edit.subscribe(data => data ? this.fillForm(this.objId): this.fillForm(0))
+    this._data.edit.subscribe(data => {
+      this.edit = data
+      data ? this.fillForm(this.objId): this.fillForm(0)
+    })
   }
 
 
@@ -39,6 +42,13 @@ export class InputFormComponent implements OnInit {
 
   fillForm(id:number) {
     this.dataForm.setValue(this.dataArray[id])
+  }
+
+  update() {
+    this.dataArray[this.objId] = (this.dataForm.value)
+    this.dataForm.reset()
+    this._data.changeShowForm(0)
+    this._data.changeEdit(0)
   }
   
 

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { DataService } from '../data.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { DataService } from '../data.service';
   templateUrl: './input-form.component.html',
   styleUrls: ['./input-form.component.css']
 })
-export class InputFormComponent implements OnInit {
+export class InputFormComponent implements OnInit, OnChanges {
   keyArray
   dataArray
   showForm
@@ -26,6 +26,7 @@ export class InputFormComponent implements OnInit {
       this.edit = data
       data ? this.fillForm(this.objId): this.fillForm(0)
     })
+    console.log(this.dataForm)
   }
 
 
@@ -51,6 +52,9 @@ export class InputFormComponent implements OnInit {
     this._data.changeEdit(0)
   }
   
+  ngOnChanges(): void {
+    console.log(this.dataForm)
+  }
 
 
 }

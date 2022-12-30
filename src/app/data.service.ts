@@ -13,11 +13,11 @@ export class DataService {
     city: ['', Validators.required]
   }
   keyArray= [
-    {key: "first_name", name: "First Name", type: "text"},
-    {key: "last_name", name: "Last Name", type: "text"},
-    {key: "age", name: "Age", type: "number"},
-    {key: "languages", name: "Languages", type: "text"},
-    {key: "city", name: "City", type: "text"}
+    {key: "first_name", name: "First Name", type: "text", min: "4"},
+    {key: "last_name", name: "Last Name", type: "text", min: "4"},
+    {key: "age", name: "Age", type: "number", min: "4"},
+    {key: "languages", name: "Languages", type: "text", min: "4"},
+    {key: "city", name: "City", type: "text", min: "4"}
   ]
   dataArray= [
     {city: "", first_name: "", last_name: "", age: '', languages: ""},

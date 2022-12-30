@@ -8,6 +8,12 @@
       <div class="col-md-6 mt-2" *ngFor="let data of keyArray" >
         <label class="form-label">{{data.name}}</label>
         <input class="form-control" [type]="data.type" formControlName={{data.key}} [class.is-invalid]="dataForm.get(data.key).invalid && dataForm.get(data.key).touched">
+        <div *ngIf="dataForm.get(data.key).invalid && dataForm.get(data.key).touched">
+          <small class="text-danger" *ngIf="dataForm.get(data.key).errors?.required && data.type!='number'">{{data.name}} is required</small>
+          <small class="text-danger"  *ngIf="dataForm.get(data.key).errors?.required && data.type==='number'">{{data.name}} is required and must be a number</small>
+          <small class="text-danger"  *ngIf="dataForm.get(data.key).errors?.minlength">{{data.name}} must be {{data.min}} characters long</small>
+          <small class="text-danger"  *ngIf="dataForm.get(data.key).errors.min?.min && data.type==='number'">{{data.name}} must be greater than {{data.min}}</small>
+      </div>
       </div>
     </div>
     <button [disabled]="!dataForm.valid" class="btn btn-primary mt-2 px-4 py-2 margin-right" type="submit" *ngIf="!edit">ADD</button>

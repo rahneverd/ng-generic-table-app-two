@@ -34,6 +34,7 @@ export class InputFormComponent implements OnInit, OnChanges {
 
   changeShowForm() {
     !this.showForm ? this._data.changeShowForm(1) : this._data.changeShowForm(0)
+    !this._data.changeEdit ? this._data.changeEdit(1) : this._data.changeEdit(0)
   }
   onSubmit() {
     this.dataArray.push(this.dataForm.value)
